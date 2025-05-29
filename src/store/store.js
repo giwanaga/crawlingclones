@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
+import resourcesReducer from './resourcesSlice'
 
 const initialGameState = {}
 function gameReducer(state = initialGameState, action) {
@@ -8,5 +9,6 @@ function gameReducer(state = initialGameState, action) {
 export const store = configureStore({
   reducer: {
     game: gameReducer,
+    resources: resourcesReducer,
   },
 })
