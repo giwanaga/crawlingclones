@@ -11,6 +11,7 @@ function Monitor() {
         border: '1px solid blue',
         display: 'flex',
         flexDirection: 'column',
+        boxSizing: 'border-box',
       }}
     >
       <div style={{ padding: '5px', borderBottom: '1px solid lightgray' }}>
@@ -40,7 +41,7 @@ function Monitor() {
       </div>
 
       {/* Display Active Module */}
-      <div style={{ flex: 1 }}>
+      <div style={{ flex: 1, display: 'flex' }}>
         {activeModule === 'resources' && <ResourcesModule />}
         {activeModule === 'feed' && (
           <div style={{ padding: '10px' }}>

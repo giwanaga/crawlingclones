@@ -2,6 +2,7 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import Monitor from './components/Monitor'
+import Console from './components/Console'
 import GameLoop from './components/GameLoop'
 import './App.css'
 
@@ -17,6 +18,9 @@ function App() {
         fontFamily: 'monospace',
         backgroundColor: '#1a1a1a',
         color: '#00ff00',
+        padding: '10px',
+        boxSizing: 'border-box',
+        gap: '10px',
       }}
     >
       <h1 style={{ textAlign: 'center', margin: '10px', color: '#00cc00' }}>
@@ -25,16 +29,7 @@ function App() {
 
       <Monitor />
 
-      <div
-        style={{
-          flex: 1,
-          border: '1px, solid, red',
-          margin: '10px',
-          padding: '10px',
-        }}
-      >
-        <h3>Console Area (Coming Soon)</h3>
-      </div>
+      <Console />
 
       <GameLoop />
     </div>
