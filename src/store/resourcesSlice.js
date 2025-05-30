@@ -2,8 +2,8 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   bioMass: {
-    current: 5,
-    perSecond: 0,
+    current: 10,
+    perSecond: 5,
     limit: 100,
   },
   energy: {

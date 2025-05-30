@@ -16,12 +16,15 @@ function ResourcesModule() {
         border: '1px solid gray',
         padding: '10px',
         margin: '10px',
-        height: '100%',
         overflowY: 'auto',
+        flex: 1,
+        display: 'flex',
+        flexDirection: 'column',
+        boxSizing: 'border-box',
       }}
     >
       <h3>Resources Dashboard</h3>
-      <div>
+      <div style={{ flex: 1, overflowY: 'auto' }}>
         <p>
           Bio Mass: {bioMass.current} / {bioMass.limit}
           {bioMass.perSecond > 0 && ` (+${bioMass.perSecond}/s)`}
