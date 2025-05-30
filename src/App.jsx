@@ -2,6 +2,7 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import Monitor from './components/Monitor'
+import GameLoop from './components/GameLoop'
 import './App.css'
 
 function App() {
@@ -34,6 +35,8 @@ function App() {
       >
         <h3>Console Area (Coming Soon)</h3>
       </div>
+
+      <GameLoop />
     </div>
   )
 }

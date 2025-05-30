@@ -7,7 +7,7 @@ const initialState = {
     limit: 100,
   },
   energy: {
-    current: 100,
+    current: 10,
     perSecond: 10,
     limit: 100,
   },
