@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
 import resourcesReducer from './resourcesSlice'
 import clonesReducer from './clonesSlice'
+import squadsReducer from './squadsSlice'
 
 const initialGameState = {}
 function gameReducer(state = initialGameState, action) {
@@ -12,5 +13,6 @@ export const store = configureStore({
     game: gameReducer,
     resources: resourcesReducer,
     clones: clonesReducer,
+    squads: squadsReducer,
   },
 })
