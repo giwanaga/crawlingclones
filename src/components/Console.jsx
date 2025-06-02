@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import ClonesBoard from './ClonesBoard'
+import SquadsBoard from './SquadsBoard'
 
 function Console() {
   const [activeMenu, setActiveMenu] = useState('clones')
@@ -48,6 +49,23 @@ function Console() {
               width: '100%',
               marginBottom: '5px',
               padding: '8px',
+              backgroundColor: activeMenu === 'clones' ? '#007bff' : '#333',
+              color: 'white',
+              border: 'none',
+              borderRadius: '4px',
+              cursor: 'pointer',
+              boxSizing: 'border-box',
+            }}
+            onClick={() => setActiveMenu('squads')}
+          >
+            Squads
+          </button>
+          <button
+            style={{
+              display: 'block',
+              width: '100%',
+              marginBottom: '5px',
+              padding: '8px',
               backgroundColor: activeMenu === 'originals' ? '#007bff' : '#333',
               color: 'white',
               border: 'none',
@@ -84,6 +102,7 @@ function Console() {
       {/* Console.Board (右側) */}
       <div style={{ flex: 1, padding: '10px' }}>
         {activeMenu === 'clones' && <ClonesBoard />}
+        {activeMenu === 'squads' && <SquadsBoard />}
         {activeMenu === 'originals' && (
           <div style={{ flex: 1 }}>
             <h4>Originals Management</h4>

@@ -33,11 +33,26 @@ export const clonesSlice = createSlice({
         existingClone.status = status
       }
     },
+    assignCloneToSquad: (status, action) => {
+      const { cloneId, squadId } = action.payload
+      const existingClone = state.list.find((clone) => clone.id === cloneId)
+      if (existingClone) {
+        existingClone.squadId = squadId
+      }
+    },
+    unassignCloneFromSquad: (state, action) => {
+      const { cloneId } = action.payload
+      const exstingClone = state.list.find((clone) => clone.id === cloneId)
+      if (existingClone) {
+        existingClone.squadId = null
+      }
+    },
     decommissionClone: (state, action) => {
       const { id } = action.payload
       const existingClone = state.list.find((clone) => clone.id === id)
       if (existingClone) {
         existingClone.status = 'decommissioned'
+        existingClone.squadId = null
       }
     },
     updateCloneHealth: (state, action) => {
@@ -64,6 +79,8 @@ export const clonesSlice = createSlice({
 export const {
   addClone,
   updateCloneStatus,
+  assignCloneToSquad,
+  unassignCloneFromSquad,
   decommissionClone,
   updateCloneHealth,
   addCloneTrait,
