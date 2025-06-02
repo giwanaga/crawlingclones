@@ -40,3 +40,63 @@
 .read-the-docs {
   color: #888;
 }
+
+/* 全体のリセットと基本的なスタイル */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background-color: #1a1a1a;
+  color: #00ff00;
+  font-family: monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* App.jsx の ルートdiv のスタイル */
+#app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  font-family: monospace;
+  background-color: #1a1a1a;
+  color: #00ff00;
+  padding: 10px;
+  box-sizing: border-box;
+  gap: 10px;
+  /* min-width: 360px; */
+  /* max-width: 428px; */
+  /* width: 100%; */
+  width: 100vw;
+  min-width: 360px;
+  max-width: 428px;
+  overflow-x: hidden;
+  background-color: #222;
+  border: 1px solid #00cc00;
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+}
+
+/* App.jsx の h1 のスタイル */
+.app-title {
+  text-align: center;
+  margin: 0 0 10px 0;
+  color: #00cc00;
+  font-size: 2em;
+}
+
+/* 他の要素のデフォルトスタイル調整 */
+button {
+  font-family: monospace;
+  font-size: 1em;
+}
+
+input {
+  font-family: monospace;
+  font-size: 1em;
+}

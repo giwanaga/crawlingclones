@@ -1,0 +1,15 @@
+.resourcesModuleContainer {
+  border: 1px solid gray;
+  padding: 10px;
+  margin: 10px; /* Monitor.jsx の tabContent が flex: 1 を持つため、この margin は維持 */
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.resourcesList {
+  flex: 1;
+  overflow-y: auto;
+}
