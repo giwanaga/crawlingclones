@@ -1,0 +1,48 @@
+.monitorContainer {
+  flex: 0 0 35%;
+  border: 1px solid blue;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  /* margin は App.jsx の gap で管理するのでここでは不要 */
+  overflow-x: hidden;
+  min-width: 0;
+}
+
+.tabBar {
+  padding: 5px;
+  border-bottom: 1px solid lightgray;
+  flex-shrink: 0;
+}
+
+.tabButton {
+  margin-right: 5px;
+  /* active 時の色は JSX で動的にclassNameを切り替える */
+  border: 1px solid gray;
+  cursor: pointer;
+  color: black;
+}
+
+/* アクティブなタブボタンのスタイル */
+.tabButtonActive {
+  background-color: lightblue;
+}
+
+/* 非アクティブなタブボタンのスタイル */
+.tabButtonInactive {
+  background-color: white;
+}
+
+.moduleContent {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.feedModuleContent {
+  padding: 10px;
+  flex: 1;
+  box-sizing: border-box;
+}

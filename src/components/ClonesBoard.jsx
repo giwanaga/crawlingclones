@@ -2,6 +2,7 @@ import React, { use } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { addClone, selectClones, selectNextCloneId } from '../store/clonesSlice'
 import { selectBioMass, decreaseResource } from '../store/resourcesSlice'
+import styles from './ClonesBoard.module.css'
 
 // Clone生成に必要なBio-Mass量
 const CLONE_COST_BIOMASS = 10
@@ -30,30 +31,17 @@ function ClonesBoard() {
   }
 
   return (
-    <div style={{ height: '100%', overflowY: 'auto' }}>
+    <div className={styles.clonesBoardContainer}>
       <h4>Clones Management</h4>
 
       {/* クローン生成セクション */}
-      <div
-        style={{
-          border: '1px solid #555',
-          padding: '10px',
-          marginBottom: '15px',
-        }}
-      >
+      <div className={styles.section}>
         <h5>Generate New Clone</h5>
         <p>Cost: {CLONE_COST_BIOMASS} Bio-Mass</p>
         <button
           onClick={handeCreateClone}
           disabled={!canCreateClone}
-          style={{
-            padding: '8px 15px',
-            backgroundColor: canCreateClone ? '#28a745' : '#6c757d',
-            color: 'white',
-            border: 'none',
-            borderRadius: '4px',
-            cursor: canCreateClone ? 'pointer' : 'not-allowed',
-          }}
+          className={`${styles.generateButton} ${canCreateClone ? styles.generateButtonEnabled : styles.generateButtonDisabled}`}
         >
           Generate Clone
         </button>
@@ -65,27 +53,14 @@ function ClonesBoard() {
       </div>
 
       {/* クローン一覧セクション */}
-      <div style={{ border: '1px solid #555', padding: '10px' }}>
+      <div className={styles.clonesGrid}>
         <h5>Clones: ({clones.length})</h5>
         {clones.length === 0 ? (
           <p>No clones generated yet.</p>
         ) : (
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))',
-              gap: '10px',
-            }}
-          >
+          <div className={styles.clonesGrid}>
             {clones.map((clone) => (
-              <div
-                key={clone.id}
-                style={{
-                  border: '1px solid #777',
-                  padding: '8px',
-                  borderRadis: '5px',
-                }}
-              >
+              <div key={clone.id} className={styles.cloneCard}>
                 <p>ID: {clone.id}</p>
                 <p>Name: {clone.name}</p>
                 <p>Status: {clone.status}</p>

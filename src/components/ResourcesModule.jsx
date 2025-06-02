@@ -5,26 +5,16 @@ import {
   selectEnergy,
   selectScrap,
 } from '../store/resourcesSlice'
+import styles from './ResourcesModule.module.css'
 
 function ResourcesModule() {
   const bioMass = useSelector(selectBioMass)
   const energy = useSelector(selectEnergy)
   const scrap = useSelector(selectScrap)
   return (
-    <div
-      style={{
-        border: '1px solid gray',
-        padding: '10px',
-        margin: '10px',
-        overflowY: 'auto',
-        flex: 1,
-        display: 'flex',
-        flexDirection: 'column',
-        boxSizing: 'border-box',
-      }}
-    >
+    <div className={styles.resourcesModuleContainer}>
       <h3>Resources Dashboard</h3>
-      <div style={{ flex: 1, overflowY: 'auto' }}>
+      <div className={styles.resoucesList}>
         <p>
           Bio Mass: {bioMass.current} / {bioMass.limit}
           {bioMass.perSecond > 0 && ` (+${bioMass.perSecond}/s)`}

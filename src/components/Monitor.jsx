@@ -1,39 +1,21 @@
 import React, { useState } from 'react'
 import ResourcesModule from './ResourcesModule'
+import styles from './Monitor.module.css'
 
 function Monitor() {
   const [activeModule, setActiveModule] = useState('resources')
 
   return (
-    <div
-      style={{
-        flex: 1,
-        border: '1px solid blue',
-        display: 'flex',
-        flexDirection: 'column',
-        boxSizing: 'border-box',
-      }}
-    >
-      <div style={{ padding: '5px', borderBottom: '1px solid lightgray' }}>
+    <div className={styles.monitorContainer}>
+      <div className={styles.tabBar}>
         <button
-          style={{
-            marginRight: '5px',
-            backgroundColor:
-              activeModule === 'resources' ? 'lightblue' : 'white',
-            border: '1px solid gray',
-            cursor: 'pointer',
-          }}
+          className={`${styles.tabButton} ${activeModule === 'resources' ? styles.tabButtonActive : styles.tabButtonInactive}`}
           onClick={() => setActiveModule('resources')}
         >
           Resources
         </button>
         <button
-          style={{
-            marginRight: '5px',
-            backgroundColor: activeModule === 'feed' ? 'lightblue' : 'white',
-            border: '1px solid gray',
-            cursor: 'pointer',
-          }}
+          className={`${styles.tabButton} ${activeModule === 'feed' ? styles.tabButtonActive : styles.tabButtonInactive}`}
           onClick={() => setActiveModule('feed')}
         >
           Feed
@@ -44,7 +26,7 @@ function Monitor() {
       <div style={{ flex: 1, display: 'flex' }}>
         {activeModule === 'resources' && <ResourcesModule />}
         {activeModule === 'feed' && (
-          <div style={{ padding: '10px' }}>
+          <div className={styles.feedModuleContent}>
             <h3>Feed</h3>
             <p>ここにシステムメッセージやプレビューが表示されます</p>
           </div>

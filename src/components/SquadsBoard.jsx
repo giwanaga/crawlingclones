@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { selectClones, assignCloneToSquad } from '../store/clonesSlice'
 import { addSquad, selectSquads } from '../store/squadsSlice'
+import styles from './SquadsBoard.module.css'
 
 function SquadsBoard() {
   const dispatch = useDispatch()
@@ -66,19 +67,13 @@ function SquadsBoard() {
   }
 
   return (
-    <div style={{ height: '100%', overflowY: 'auto' }}>
+    <div className={styles.squadsBoardContainer}>
       <h4>Crawling Squads</h4>
 
       {/* Squad編成アクション */}
-      <div
-        style={{
-          border: '1px solid #555',
-          padding: '10px',
-          marginBottom: '15px',
-        }}
-      >
+      <div className={styles.section}>
         <h5>Form New Squad</h5>
-        <div style={{ marginBottom: '10px' }}>
+        <div className={styles.inputGroup}>
           <label htmlFor="squadNameInput">Squad Name:</label>
           <input
             id="squadNameInput"
@@ -86,13 +81,7 @@ function SquadsBoard() {
             value={newSquadName}
             onChange={(e) => setNewSquadName(e.target.value)}
             placeholder="e.g., Alpha Squad"
-            style={{
-              marginLeft: '5px',
-              padding: '5px',
-              backgroundColor: '#333',
-              color: '#00ff00',
-              border: '1px solid #777',
-            }}
+            className={styles.squadNameInput}
           />
         </div>
 
@@ -101,32 +90,12 @@ function SquadsBoard() {
         {availableClones.length === 0 ? (
           <p>No clones available for squad formation. Generate more clones.</p>
         ) : (
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(120px, 1r))',
-              gap: '8px',
-              marginBottom: '10px',
-            }}
-          >
+          <div className={styles.availableClonesGrid}>
             {availableClones.map((clone) => (
               <button
                 key={clone.id}
                 onClick={() => handleCloneSelection(clone.id)}
-                style={{
-                  paddig: '5px',
-                  border: selectedCloneIds.includes(clone.id)
-                    ? '2px solid yellow'
-                    : '1px solid #777;',
-                  backgroundColor: selectedCloneIds.includes(clone.id)
-                    ? '#004d00'
-                    : '#222',
-                  color: 'white',
-                  borderRadius: '3px',
-                  cursor: 'pointer',
-                  fontSize: '0.8em',
-                  textAlign: 'left',
-                }}
+                className={`${styles.cloneSelectionButton} ${selectedCloneIds.includes(clone.id) ? styles.cloneSelectionButtonSelected : ''}`}
               >
                 ID: {clone.id}
                 <br />
@@ -146,22 +115,14 @@ function SquadsBoard() {
 
         {/* 選択中のクローン表示 */}
         <h6>Selected Clones ({selectedCloneIds.length})</h6>
-        <div style={{ marginBottom: '10px', fontSize: '0.9em' }}>
+        <div className={styles.selectedClonesList}>
           {selectedCloneIds.length === 0 ? (
             <p>No clones selected.</p>
           ) : (
             selectedCloneIds.map((id) => (
               <span
                 key={id}
-                style={{
-                  display: 'inline-block',
-                  backgroundColor: '#006400',
-                  padding: '3px 8px',
-                  borderRadius: '3px',
-                  marginRight: '5px',
-                  marginBottom: '5px',
-                  cursor: 'pointer',
-                }}
+                className={styles.selectedCloneTag}
                 onClick={() => handleCloneSelection(id)}
               >
                 {allClones.find((c) => c.id === id)?.name || id} [x]
@@ -173,15 +134,7 @@ function SquadsBoard() {
         <button
           onClick={handleCreateSquad}
           disabled={selectedCloneIds.length === 0} // メンバーが選択されていなければ無効
-          style={{
-            padding: '8px 15px',
-            backgroundColor:
-              selectedCloneIds.length > 0 ? '#007bff' : '#6c757d',
-            color: 'white',
-            border: 'none',
-            borderRadius: '4px',
-            cursor: selectedCloneIds.length > 0 ? 'pointer' : 'not-allowed',
-          }}
+          className={`${styles.formSquadButton} ${selectedCloneIds.length > 0 ? styles.formSquadButtonEnabled : styles.formSquadButtonDisabled}`}
         >
           Form Squad ({selectedCloneIds.length} Clones)
         </button>
@@ -192,27 +145,14 @@ function SquadsBoard() {
       {squads.length === 0 ? (
         <p>No squads formed yet.</p>
       ) : (
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
-            gap: '1px',
-          }}
-        >
+        <div className={styles.squadsGrid}>
           {squads.map((squad) => (
-            <div
-              key={squad.id}
-              style={{
-                border: '1px solid #777',
-                padding: '8px',
-                borderRadius: '5px',
-              }}
-            >
+            <div key={squad.id} className={styles.squadCard}>
               <p>ID: {squad.id}</p>
               <p>Name: {squad.name}</p>
               <p>Status: {squad.status}</p>
               <p>Members: {squad.members.length} clone(s)</p>
-              <p style={{ fontSize: '0.8em', color: '#aaa' }}>
+              <p className={styles.squadMemberNames}>
                 (
                 {squad.members
                   .map(
@@ -225,9 +165,7 @@ function SquadsBoard() {
               </p>
               {/* Capabilitiesの表示 */}
               <p>Capabilities:</p>
-              <ul
-                style={{ margin: '0', paddingLeft: '20px', fontSize: '0.9em' }}
-              >
+              <ul className={styles.capabilitiesList}>
                 <li>Mobility: {squad.capabilities.mobility}</li>
                 <li>Capacity: {squad.capabilities.capacity}</li>
                 <li>Perception: {squad.capabilities.perception}</li>
